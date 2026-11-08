@@ -1,0 +1,55 @@
+@baseUrl = http://127.0.0.1:8000
+
+### Health check
+GET {{baseUrl}}/health
+
+### Chat: question with an answer
+POST {{baseUrl}}/chat
+Content-Type: application/json
+
+{
+  "question": "Qual é o SLA para incidentes P1 no plano Enterprise?"
+}
+
+### Chat: with debug (query plan, retrieved chunks, selected chunks)
+POST {{baseUrl}}/chat
+Content-Type: application/json
+
+{
+  "question": "Qual é o SLA para incidentes P1 no plano Enterprise?",
+  "debug": true
+}
+
+### Chat: without reranking
+POST {{baseUrl}}/chat
+Content-Type: application/json
+
+{
+  "question": "Quais formas de pagamento o FCAI Cloud aceita?",
+  "use_rerank": false,
+  "debug": true
+}
+
+### Chat: ambiguous question (returns needs_clarification=true)
+POST {{baseUrl}}/chat
+Content-Type: application/json
+
+{
+  "question": "Como funciona o suporte no plano da empresa?"
+}
+
+### Chat: answer not in the knowledge base
+POST {{baseUrl}}/chat
+Content-Type: application/json
+
+{
+  "question": "Qual é a capital da França?"
+}
+
+### Chat: empty question (returns 400)
+POST {{baseUrl}}/chat
+Content-Type: application/json
+
+{
+  "question": "   "
+}

@@ -1,0 +1,15 @@
+langchain
+langchain-core
+langchain-openai
+langchain-postgres
+langchain-text-splitters
+langchain-google-genai
+google-genai
+fastapi
+uvicorn
+python-frontmatter
+psycopg[binary]
+python-dotenv
+pydantic
+pydantic-settings
+PyYAML
